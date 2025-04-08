@@ -1,5 +1,5 @@
 package com.creativehabit.creativehabits;
-
+import java.util.ArrayList;
 import java.util.Random;
 
 public class SortingAlgorithms {
@@ -82,6 +82,19 @@ public class SortingAlgorithms {
            arry[minIndex] = temp;
         }
         return arry;
+    }
+
+    public void insertionSort(ArrayList<Student> student){
+        for (int i = 1; i < student.size(); i++){
+            Student key = student.get(i);
+            int j = i - 1;
+
+            while(j >=0 && student.get(j).getGpa() > key.getGpa()){
+                student.set(j + 1, student.get(j));
+                j--;
+            }
+            student.set(j + 1, key);
+        }
     }
 
 }

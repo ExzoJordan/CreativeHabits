@@ -3,6 +3,7 @@ package com.creativehabit.creativehabits;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 @SpringBootApplication
@@ -36,6 +37,26 @@ public class CreativeHabitsApplication {
             System.out.print(randNameArry[i] + " ");
         }
 
+        //Setting up insertion sort
+
+        ArrayList<Student> students = new ArrayList <Student>();
+        students.add(new Student("Exzo", 2.5));
+        students.add(new Student("Nathaniel", 3.4));
+        students.add(new Student("Rose", 4.0));
+        students.add(new Student("Nakira", 3.7));
+        students.add(new Student("Ben", 2.7));
+
+       for (Student student : students){
+           System.out.println(student.toString());
+       }
+
+        sort.insertionSort(students);
+
+       System.out.println("\nInsertion sort: ");
+
+       for(Student student : students){
+           System.out.println(student.toString());
+       }
 
 
     }
