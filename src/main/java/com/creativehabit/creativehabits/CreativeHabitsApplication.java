@@ -17,13 +17,13 @@ public class CreativeHabitsApplication {
 
         randNumArry = sort.createNums(randNumArry);//Create Numbers
 
-       // System.out.println("The random numbers are: ");
-       // sort.printArray(randNumArry);
+        System.out.println("The random numbers are: ");
+        sort.printArray(randNumArry);
 
-       // sort.bubbleSort(randNumArry);
+        sort.bubbleSort(randNumArry);
 
-       // System.out.println("\nThese are the numbers sorted: ");
-       // sort.printArray(randNumArry);
+        System.out.println("\nThese are the numbers sorted: ");
+        sort.printArray(randNumArry);
 
         for (int i = 0 ; i < randNameArry.length ; i++){
             System.out.print(randNameArry[i] + " ");
