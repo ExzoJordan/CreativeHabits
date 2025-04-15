@@ -7,7 +7,7 @@ public class SortingAlgorithms {
     Random rand = new Random();
 
     /**
-     * @param arry
+     * @param arry Array of integers.
      * @return Returns the array with random numbers.
      */
     public int[] createNums(int[] arry){
@@ -19,11 +19,10 @@ public class SortingAlgorithms {
     }
 
     /**
-     * Prints the array.
-     * @param arry
+     * Prints an array of integers.
+     * @param arry Array of integers.
      */
     public void printArray(int[] arry){
-
         for (int i = 0; i < arry.length; i++){
             System.out.print(arry[i] + " ");
         }
@@ -31,9 +30,9 @@ public class SortingAlgorithms {
 
     /**
      * Swaps 2 numbers in an array.
-     * @param arry
-     * @param i
-     * @param j
+     * @param arry Array of integers.
+     * @param i Index of the first array.
+     * @param j Index of the second array.
      */
     public void swap(int[] arry, int i , int j){
         int temp;
@@ -41,13 +40,14 @@ public class SortingAlgorithms {
         temp = arry[i];
         arry[i] = arry[j];
         arry[j] = temp;
-
     }
 
     /**
      * Bubble Sort Algorithm O(n^2)
-     * @param arry
-     * @return
+     * Takes an array of integers and sorts them into ascending using
+     * the Bubble Sort algorithm.
+     * @param arry Array of integers.
+     * @return Array in ascending order.
      */
     public int[] bubbleSort(int[] arry){
         for (int i = 0; i < arry.length - 1; i++){
@@ -55,7 +55,6 @@ public class SortingAlgorithms {
 
                 if (arry[j] > arry[j + 1]){
                     swap(arry, j, j + 1);
-
                 }
             }
         }
@@ -64,8 +63,9 @@ public class SortingAlgorithms {
 
     /**
      * Selection Sort Algorithm O(n^2)
-     * @param arry
-     * @return
+     * Sorts an array of strings in alphabetical order.
+     * @param arry Array of Strings.
+     * @return Array of strings in alphabetical order.
      */
     public String[] selectionSort(String[] arry){
         for (int i = 0; i < arry.length - 1; i++){
@@ -84,6 +84,12 @@ public class SortingAlgorithms {
         return arry;
     }
 
+    /**
+     * Insertion Sort
+     * Takes ArrayLists of student objects that take a name and gpa as parameters
+     * then sorts the students by gpa.
+     * @param student ArrayList of Student objects.
+     */
     public void insertionSort(ArrayList<Student> student){
         for (int i = 1; i < student.size(); i++){
             Student key = student.get(i);
@@ -97,6 +103,11 @@ public class SortingAlgorithms {
         }
     }
 
+    /**
+     * Merge Sort
+     * Sorts an integer array is ascending order using the Merge Sort algorithm.
+     * @param arry Array of Integers.
+     */
     public void mergeSort(int[] arry){
          int arryLength = arry.length;
 
@@ -127,27 +138,32 @@ public class SortingAlgorithms {
         //Merge the array
         merge(arry, leftHalf,rightHalf);
 
-
     }
 
+    /**
+     * Merge part of the Merge Sort algorithm merging the left side and right side
+     * of the array.
+     * @param array Array of integers.
+     * @param leftArry Left half of the array.
+     * @param rightArry Right half of the array.
+     */
     public static void merge (int[] array, int[] leftArry, int[] rightArry){
         int leftLength = leftArry.length;
         int rightLength = rightArry.length;
 
         int i = 0, j = 0, k = 0;
 
-        while (i < leftLength && j < rightLength){
-
-            if (leftArry[i] <= rightArry[j]){
+        while (i < leftLength && j < rightLength) {
+            if (leftArry[i] <= rightArry[j]) {
                 array[k] = leftArry[i];
                 i++;
-            }
-            else{
+            } else {
                 array[k] = rightArry[j];
                 j++;
             }
             k++;
         }
+
         while (i < leftLength){
             array[k] = leftArry[i];
             i++;
@@ -161,4 +177,31 @@ public class SortingAlgorithms {
         }
     }
 
+    public void quickSort(int[] arry, int lowIndex, int highIndex){
+        if(lowIndex >= highIndex){
+            return;
+        }
+
+        int pivot = arry[highIndex];
+
+        int leftPointer = lowIndex;
+        int rightPointer = highIndex;
+
+        while (leftPointer < rightPointer){
+
+            while (arry[leftPointer] <=  pivot && leftPointer < rightPointer){
+                leftPointer++;
+            }
+
+            while (arry[rightPointer] >= pivot && rightPointer > leftPointer){
+                rightPointer--;
+            }
+
+            swap(arry, leftPointer, rightPointer);
+        }
+        swap(arry, leftPointer, highIndex);
+
+        quickSort(arry, lowIndex, rightPointer - 1);
+        quickSort(arry, leftPointer + 1, highIndex);
+    }
 }

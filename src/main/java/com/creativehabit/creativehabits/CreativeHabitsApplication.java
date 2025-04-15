@@ -13,10 +13,33 @@ public class CreativeHabitsApplication {
     public static void main(String[] args) {
         SpringApplication.run(CreativeHabitsApplication.class, args);
 
+        //Bubble Sort
+        demoBubbleSort();
 
-        SortingAlgorithms sort = new SortingAlgorithms();
+        //Selection Sort
+        demoSelectionSort();
+
+        //Insertion Sort
+        demoInsertionSort();
+
+    }
+
+    /**
+     * Takes an array of strings and prints them.
+     * @param names
+     */
+    public static void printNamesArry(String[] names){
+        for (int i = 0; i < names.length ; i++){
+            System.out.print(names[i] + " ");
+        }
+    }
+
+    /**
+     * Demonstrates Bubble Sort using integers
+     */
+    public static void demoBubbleSort(){
         int[] randNumArry = new int[10];
-        String[] randNameArry = {"Rose","Nathaniel","Exzo","Kat","Nakira","Ben","Ella","Cooper","Emery","Jeff"};
+        SortingAlgorithms sort = new SortingAlgorithms();
 
         randNumArry = sort.createNums(randNumArry);//Create Numbers
 
@@ -28,17 +51,13 @@ public class CreativeHabitsApplication {
 
         System.out.println("\n\nThese are the numbers sorted: ");
         sort.printArray(randNumArry);
+    }
 
-
-        System.out.println("\n\nUnsorted names: ");
-        printNamesArry(randNameArry);
-
-        sort.selectionSort(randNameArry);
-
-        System.out.println("\n\nSorted names: ");
-        printNamesArry(randNameArry);
-
-        //Setting up insertion sort
+    /**
+     * Demonstrates insertion Sort using student objects in array lists
+     */
+    public static void demoInsertionSort(){
+        SortingAlgorithms sort = new SortingAlgorithms();
 
         ArrayList<Student> students = new ArrayList <Student>();
         students.add(new Student("Exzo", 2.5));
@@ -49,29 +68,32 @@ public class CreativeHabitsApplication {
 
         System.out.println(" ");
         for (Student student : students){
-           System.out.println(student.toString());
+            System.out.println(student.toString());
         }
 
         sort.insertionSort(students);
 
         System.out.println("\nInsertion sort: ");
-
         for(Student student : students){
-           System.out.println(student.toString());
-        }
-
-
-
-
-    }
-
-    public static void printArry(int[] arry){
-
-    }
-
-    public static void printNamesArry(String[] names){
-        for (int i = 0; i < names.length ; i++){
-            System.out.print(names[i] + " ");
+            System.out.println(student.toString());
         }
     }
+
+    /**
+     * Demonstrates Selection Sort using names.
+     */
+    public static void demoSelectionSort(){
+        SortingAlgorithms sort = new SortingAlgorithms();
+        String[] randNameArry = {"Rose","Nathaniel","Exzo","Kat","Nakira","Ben","Ella","Cooper","Emery","Jeff"};
+
+        System.out.println("\n\nUnsorted names: ");
+        printNamesArry(randNameArry);
+
+        sort.selectionSort(randNameArry);
+
+        System.out.println("\n\nSorted names: ");
+        printNamesArry(randNameArry);
+    }
+
+
 }
