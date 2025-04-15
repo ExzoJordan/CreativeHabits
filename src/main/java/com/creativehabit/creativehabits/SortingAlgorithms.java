@@ -97,4 +97,68 @@ public class SortingAlgorithms {
         }
     }
 
+    public void mergeSort(int[] arry){
+         int arryLength = arry.length;
+
+         //An array by itself is already sorted
+         if (arryLength < 2){
+             return;
+         }
+
+         //Split array into a left half and right half
+         int midIndex = arryLength / 2;
+         int[] leftHalf = new int[midIndex];
+         int[] rightHalf = new int[arryLength - midIndex];
+
+         //Fill the left half of the array
+        for (int i = 0; i < midIndex; i++){
+            leftHalf[i] = arry[i];
+        }
+
+        //Fill the right half of the array
+        for (int i  = midIndex; i < arryLength; i++){
+            rightHalf[i - midIndex] = arry[i];
+        }
+
+        //Recursively call the mergeSort method for left and right half
+        mergeSort(leftHalf);
+        mergeSort(rightHalf);
+
+        //Merge the array
+        merge(arry, leftHalf,rightHalf);
+
+
+    }
+
+    public static void merge (int[] array, int[] leftArry, int[] rightArry){
+        int leftLength = leftArry.length;
+        int rightLength = rightArry.length;
+
+        int i = 0, j = 0, k = 0;
+
+        while (i < leftLength && j < rightLength){
+
+            if (leftArry[i] <= rightArry[j]){
+                array[k] = leftArry[i];
+                i++;
+            }
+            else{
+                array[k] = rightArry[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < leftLength){
+            array[k] = leftArry[i];
+            i++;
+            k++;
+        }
+
+        while (j < rightLength){
+            array[k] = rightArry[j];
+            j++;
+            k++;
+        }
+    }
+
 }
